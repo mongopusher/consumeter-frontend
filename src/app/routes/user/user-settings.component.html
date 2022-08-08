@@ -1,0 +1,24 @@
+<div class="form">
+  <form [formGroup]="userSettings"
+        (submit)="save()">
+    <div>
+
+      <text-input label="username"
+                  [formControl]="usernameFormcontrol"
+                  ngDefaultControl></text-input>
+
+      <text-input label="email"
+                  [formControl]="emailFormcontrol"
+                  ngDefaultControl></text-input>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password"
+             id="password"
+             formControlName="password">
+    </div>
+
+    <br>
+    <button type="submit">Save</button>
+  </form>
+</div>

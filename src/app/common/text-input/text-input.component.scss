@@ -1,0 +1,42 @@
+@import "../../variables";
+
+.text-input {
+  margin-top: 10px;
+  display: grid;
+
+  grid-template-areas: 'l'
+                       'i';
+
+  .label {
+    grid-area: l;
+    justify-self: center;
+    color: $primary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .input {
+    grid-area: i;
+    justify-self: center;
+    position: center;
+    border-bottom: 2px solid $secondary-light;
+
+    input {
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      border: none;
+      color: $primary-dark;
+      transition: color 0.2s ease;
+
+      &:focus {
+        color: $secondary;
+      }
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+}

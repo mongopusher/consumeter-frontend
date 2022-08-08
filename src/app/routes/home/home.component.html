@@ -1,0 +1,9 @@
+<form [formGroup]="articleFormGroup">
+  <text-input label="article name"
+              [formControl]="articleNameFormControl"
+              ngDefaultControl></text-input>
+  <number-input label="cost"
+                placeholder="0,00€"
+                [formControl]="articlePriceFormControl"
+                ngDefaultControl></number-input>
+</form>

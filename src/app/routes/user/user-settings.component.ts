@@ -1,20 +1,29 @@
 import {Component, Inject} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "./user.service";
 
 @Component({
-  selector: 'user-settings',
+  selector: 'user',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent {
+  public usernameFormcontrol: FormControl;
+  public emailFormcontrol: FormControl;
   public userSettings: FormGroup;
 
   public constructor(@Inject(FormBuilder) private formBuilder: FormBuilder,
                      @Inject(UserService) private userService: UserService) {
-    this.userSettings = this.formBuilder.group({
-      username: ['', [Validators.required]],
+    this.usernameFormcontrol = this.formBuilder.control({
       email: ['', [Validators.required]],
+    })
+    this.emailFormcontrol = this.formBuilder.control({
+      email: ['', [Validators.required]],
+    })
+
+    this.userSettings = this.formBuilder.group({
+      username: this.usernameFormcontrol,
+      email: this.emailFormcontrol,
       password: ['', [Validators.required]],
     });
 
