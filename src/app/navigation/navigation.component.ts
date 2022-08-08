@@ -1,25 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {ROUTES} from '@angular/router';
-import {TNavItem} from "./nav-item/TNavItem";
+import {NAV_ROUTES} from "./nav-routes.constant";
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  routes: Array<TNavItem> = [
-    {
-      route: {},
-      name: 'home',
-      icon: 'home',
-    }
-  ];
+  routes = NAV_ROUTES;
+  isShown: boolean;
 
-  constructor() {
+  public constructor() {
+    this.isShown = false;
   }
 
   ngOnInit(): void {
   }
 
+  toggleNavBar(): void {
+    this.isShown = !this.isShown;
+  }
 }

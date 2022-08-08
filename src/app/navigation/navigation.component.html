@@ -1,5 +1,14 @@
-<mat-toolbar>
-  <div *ngFor="let route of routes">
-    <app-nav-item [navItem]="route"></app-nav-item>
+<div class="navigation-bar">
+  <button class="burger-button"
+          (click)="toggleNavBar()">
+    <span class="burger-icon">EEE</span>
+  </button>
+
+  <div *ngIf="isShown === true">
+    <div *ngFor="let route of routes">
+      <nav-item [route]="route"></nav-item>
+    </div>
   </div>
-</mat-toolbar>
+</div>
+
+

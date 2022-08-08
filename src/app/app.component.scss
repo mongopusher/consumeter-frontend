@@ -1,0 +1,12 @@
+.app-grid {
+  display: grid;
+  grid-template-columns:  minmax(50px, max-content) 1fr;
+
+  .nav-wrapper {
+
+  }
+
+  .view-wrapper {
+
+  }
+}

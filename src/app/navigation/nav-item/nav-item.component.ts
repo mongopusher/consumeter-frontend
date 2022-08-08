@@ -1,15 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TNavItem} from "./TNavItem";
+import {Route, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-nav-item',
+  selector: 'nav-item',
   templateUrl: './nav-item.component.html',
   styleUrls: ['./nav-item.component.scss']
 })
 export class NavItemComponent implements OnInit {
-  @Input() navItem!: TNavItem;
+  @Input() route!: Route;
 
-  constructor() {
+
+  constructor(public router: Router) {
   }
 
   ngOnInit(): void {

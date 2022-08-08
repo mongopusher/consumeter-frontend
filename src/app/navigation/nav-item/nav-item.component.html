@@ -1,1 +1,6 @@
-<a [href]="navItem.route">{{navItem.name}}</a>
+<div class="route-item">
+  <a class="link-text"
+     [routerLink]="route.path">
+    <span>{{route.path}}</span>
+  </a>
+</div>
