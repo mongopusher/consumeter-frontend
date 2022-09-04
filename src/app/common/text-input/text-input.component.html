@@ -1,12 +1,16 @@
 <div class="text-input">
   <div class="label">
-    <label for="text-input">{{label}}</label>
+    <label [for]="'text-input' + label"
+           [classList]="labelClassList">
+      {{label}}
+    </label>
   </div>
   <div class="input">
-    <input type="text"
-           id="text-input"
+    <input [type]="isPassword === true ? 'password' : 'text'"
+           [id]="'text-input' + label"
            placeholder="{{label}}"
            [formControl]="formControl"
-    >
+           (focusin)="onFocusIn()"
+           (focusout)="onFocusOut()">
   </div>
 </div>

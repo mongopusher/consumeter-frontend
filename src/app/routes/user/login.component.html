@@ -1,0 +1,17 @@
+<div class="form">
+  <form [formGroup]="userSettings"
+        (submit)="login()">
+    <div class="form-box">
+      <text-input label="username or email"
+                  [formControl]="usernameOrEmailFormcontrol"
+                  ngDefaultControl></text-input>
+
+      <text-input label="password"
+                  [formControl]="passwordFormcontrol"
+                  [isPassword]="true"
+                  ngDefaultControl></text-input>
+      <br>
+      <button type="submit" class="login big">log in</button>
+    </div>
+  </form>
+</div>

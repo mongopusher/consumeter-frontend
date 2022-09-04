@@ -10,7 +10,7 @@
   }
 
   &:hover {
-    background-color: $primary-light;
+    background-color: mix($primary, $primary-light);
   }
 }
 

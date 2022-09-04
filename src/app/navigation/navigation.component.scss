@@ -2,17 +2,12 @@
 .burger-button {
   margin: auto;
   border-radius: 0;
-  background-color: $primary;
   border: none;
   width: 100%;
-  height: 50px;
+  font-size: 4em;
 
   span {
     color: $secondary
-  }
-
-  &:hover {
-    background-color: mix($primary, $primary-light);
   }
 }
 

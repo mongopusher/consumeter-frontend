@@ -10,15 +10,14 @@
       <text-input label="email"
                   [formControl]="emailFormcontrol"
                   ngDefaultControl></text-input>
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password"
-             id="password"
-             formControlName="password">
+
+      <text-input label="password"
+                  [formControl]="passwordFormcontrol"
+                  [isPassword]="true"
+                  ngDefaultControl></text-input>
     </div>
 
     <br>
-    <button type="submit">Save</button>
+    <button type="submit" class="big">Save</button>
   </form>
 </div>

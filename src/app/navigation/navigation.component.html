@@ -1,9 +1,10 @@
 <div class="navigation-bar">
   <button class="burger-button"
           (click)="toggleNavBar()">
-    <span class="burger-icon">EEE</span>
+    <span class="burger-icon">≡</span>
   </button>
 
+  <!-- TODO: this should be hidden with css and add a smooth animation -->
   <div *ngIf="isShown === true">
     <div *ngFor="let route of routes">
       <nav-item [route]="route"></nav-item>

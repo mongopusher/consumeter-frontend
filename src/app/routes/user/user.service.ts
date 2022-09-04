@@ -4,7 +4,7 @@ import {IUserResponse} from "./user-response.type";
 
 @Injectable()
 export class UserService {
-  private token = "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbWlyYWRvIiwiZW1haWwiOiJ1cnMuZ3JhbXNhbGxAd2ViLmRlIiwiaWF0IjoxNjU5OTY4NjQxLCJleHAiOjE2NjAwNTUwNDF9.P5FeP5YQ2mIkYq9mCE9xF6sPBE_tLwKj-nr0tkBj4AU";
+  private token = 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEB0ZXN0LmRlIiwiaWF0IjoxNjYyMzEyNzU4LCJleHAiOjE2NjIzOTkxNTh9.5hgnum12B_pXt7QeHlxOZrxOcdhgtniLWC35MaXK8vA';
 
   public constructor(private httpClient: HttpClient) {
 
@@ -16,6 +16,8 @@ export class UserService {
         Authorization: this.token,
       }
     }).toPromise();
+
+    console.log(response);
 
     this.processResponse(response);
 
@@ -32,9 +34,15 @@ export class UserService {
     this.processResponse(response);
   }
 
+  public async login(loginUserDto: any): Promise<void> {
+    const response = await this.httpClient.post<IUserResponse>('http://localhost:3000/login', {user: loginUserDto}).toPromise();
+
+    this.processResponse(response)
+  }
+
 
   private processResponse(response: IUserResponse): void {
     // TODO: Should be saved globally, not here.
-    //this.token = response.user.token;
+    this.token = `Token ${response.user.token}`;
   }
 }

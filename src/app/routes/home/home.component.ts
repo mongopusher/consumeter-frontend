@@ -1,5 +1,5 @@
 import {Component, Inject} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'home',

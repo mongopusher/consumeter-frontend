@@ -17,9 +17,25 @@ export class TextInputComponent implements OnInit {
   @Input()
   public formControl!: FormControl;
 
+  @Input()
+  public isPassword = false;
+
+  public labelClassList: Array<string>;
+
   public constructor() {
+    this.labelClassList = ['unfocused'];
   }
 
   public ngOnInit(): void {
+  }
+
+  public onFocusIn(): void {
+    this.labelClassList = [];
+  }
+
+  public onFocusOut(): void {
+    if (this.formControl.value === '') {
+      this.labelClassList = ['unfocused'];
+    }
   }
 }

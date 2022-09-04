@@ -1,7 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "src/app/variables";
 
 body {
   margin: 0;
+}
+
+button {
+  color: $secondary;
+  background-color: $primary;
+  border: 2px solid $secondary;
+
+
+
+  &:hover {
+    cursor: pointer;
+    background-color: mix($primary, $primary-light);
+  }
+
+  &.secondary {
+
+  }
+
+  border-radius: 0.5em;
+  padding: 5px;
+
+  &.small {
+    font-size: 1em;
+  }
+
+  &.big {
+    font-size: 2em;
+    padding: 8px;
+  }
 }

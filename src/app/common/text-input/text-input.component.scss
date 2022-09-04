@@ -12,8 +12,8 @@
     justify-self: center;
     color: $primary;
 
-    &:hover {
-      color: $primary;
+    label.unfocused {
+      color: transparent;
     }
   }
 
@@ -31,8 +31,15 @@
       color: $primary-dark;
       transition: color 0.2s ease;
 
+      &::placeholder {
+        opacity: 20%;
+      }
+
       &:focus {
         color: $secondary;
+        &::placeholder {
+          color: transparent;
+        }
       }
       &:hover {
         color: $secondary;
