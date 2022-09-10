@@ -6,6 +6,7 @@ import {NavigationComponent} from "./navigation.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {HomeModule} from "../routes/home/home.module";
 import {UserModule} from "../routes/user/user.module";
+import {UserGuard} from "../guards/UserGuard";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {UserModule} from "../routes/user/user.module";
     RouterModule,
     NavigationComponent,
   ],
-  providers: [],
+  providers: [
+    UserGuard,
+  ],
 })
 export class RoutingModule {
 }

@@ -6,8 +6,17 @@ import {IUserResponse} from "./user-response.type";
 export class UserService {
   private token = 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEB0ZXN0LmRlIiwiaWF0IjoxNjYyMzEyNzU4LCJleHAiOjE2NjIzOTkxNTh9.5hgnum12B_pXt7QeHlxOZrxOcdhgtniLWC35MaXK8vA';
 
+
   public constructor(private httpClient: HttpClient) {
 
+  }
+
+  public isLoggedIn(): boolean {
+    /* take a look at:
+        https://codecraft.tv/courses/angular/routing/router-guards/
+        https://blog.angular-university.io/angular-jwt-authentication/
+    */
+    return true;
   }
 
   public async loadUser(): Promise<IUserResponse> {
