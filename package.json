@@ -2,11 +2,7 @@
   "name": "consumeter-frontend",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng serve --watch --configuration development",
-    "test": "ng test"
+    "start": "nps"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +15,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "nps": "^5.10.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
