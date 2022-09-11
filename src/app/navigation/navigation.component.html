@@ -4,8 +4,12 @@
     <span class="burger-icon">≡</span>
   </button>
 
+
   <!-- TODO: this should be hidden with css and add a smooth animation -->
   <div *ngIf="isShown === true">
+    <div class="logout">
+      <button (click)="logout()">logout</button>
+    </div>
     <div *ngFor="let route of routes">
       <nav-item [route]="route"></nav-item>
     </div>

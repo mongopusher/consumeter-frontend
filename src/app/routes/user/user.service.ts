@@ -1,12 +1,11 @@
 import {Inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {IUserResponse} from "./user-response.type";
+import * as dayjs from 'dayjs';
+import {Dayjs} from "dayjs";
 
 @Injectable()
 export class UserService {
-  private token = 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInVzZXJuYW1lIjoidGVzdCIsImVtYWlsIjoidGVzdEB0ZXN0LmRlIiwiaWF0IjoxNjYyMzEyNzU4LCJleHAiOjE2NjIzOTkxNTh9.5hgnum12B_pXt7QeHlxOZrxOcdhgtniLWC35MaXK8vA';
-
-
   public constructor(private httpClient: HttpClient) {
 
   }
@@ -16,17 +15,11 @@ export class UserService {
         https://codecraft.tv/courses/angular/routing/router-guards/
         https://blog.angular-university.io/angular-jwt-authentication/
     */
-    return true;
+    return dayjs().isBefore(this.getExpiration());
   }
 
   public async loadUser(): Promise<IUserResponse> {
-    const response: IUserResponse = await this.httpClient.get<IUserResponse>('http://localhost:3000/user', {
-      headers: {
-        Authorization: this.token,
-      }
-    }).toPromise();
-
-    console.log(response);
+    const response: IUserResponse = await this.httpClient.get<IUserResponse>('http://localhost:3000/user').toPromise();
 
     this.processResponse(response);
 
@@ -34,11 +27,7 @@ export class UserService {
   }
 
   public async updateUser(updateUserDto: any): Promise<void> {
-    const response = await this.httpClient.put<IUserResponse>('http://localhost:3000/update-user', {user: updateUserDto}, {
-      headers: {
-        Authorization: this.token,
-      }
-    }).toPromise();
+    const response = await this.httpClient.put<IUserResponse>('http://localhost:3000/update-user', {user: updateUserDto}).toPromise();
 
     this.processResponse(response);
   }
@@ -49,9 +38,26 @@ export class UserService {
     this.processResponse(response)
   }
 
+  public logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expires_at');
+  }
+
 
   private processResponse(response: IUserResponse): void {
-    // TODO: Should be saved globally, not here.
-    this.token = `Token ${response.user.token}`;
+    const expiresAt = dayjs().add(response.user.expiresIn, 'second')
+
+    localStorage.setItem('token', response.user.token);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    console.log('Login successful. You will be automatically logged out:', expiresAt.format('DD.MM.YYYY-HH:mm:ss'));
+  }
+
+  private getExpiration(): Dayjs | undefined {
+    const expiration = localStorage.getItem('expires_at');
+    if (expiration === null) {
+      return undefined;
+    }
+    const expiresAt = JSON.parse(expiration);
+    return dayjs(expiresAt);
   }
 }
