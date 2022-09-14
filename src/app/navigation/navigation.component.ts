@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {NAV_ROUTES} from "./nav-routes.constant";
+import {APP_ROUTES, USER_ROUTES} from "./routes.constant";
 import {UserService} from "../routes/user/user.service";
 
 @Component({
@@ -8,12 +8,14 @@ import {UserService} from "../routes/user/user.service";
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-  routes = NAV_ROUTES;
+  routes = USER_ROUTES;
   isShown: boolean;
 
   public constructor(@Inject(UserService) private userService: UserService) {
     this.isShown = false;
   }
+
+
 
   public toggleNavBar(): void {
     this.isShown = !this.isShown;

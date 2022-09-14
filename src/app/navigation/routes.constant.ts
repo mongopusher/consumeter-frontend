@@ -1,21 +1,30 @@
 import {Routes} from "@angular/router";
 import {HomeComponent} from "../routes/home/home.component";
 import {UserSettingsComponent} from "../routes/user/user-settings.component";
-import {LoginComponent} from "../routes/user/login.component";
 import {UserGuard} from "../guards/UserGuard";
+import {LoginComponent} from "../routes/user/login.component";
 
-export const NAV_ROUTES: Routes = [
+export const USER_ROUTES: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'account',
     component: UserSettingsComponent,
     canActivate: [UserGuard]
   },
+];
+
+export const APP_ROUTES: Routes = [
+  ...USER_ROUTES,
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   },
 ];

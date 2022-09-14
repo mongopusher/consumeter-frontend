@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {NAV_ROUTES} from "./nav-routes.constant";
+import {APP_ROUTES} from "./routes.constant";
 import {NavItemComponent} from "./nav-item/nav-item.component";
 import {NavigationComponent} from "./navigation.component";
 import {BrowserModule} from "@angular/platform-browser";
@@ -14,7 +14,7 @@ import {UserGuard} from "../guards/UserGuard";
     NavigationComponent,
   ],
   imports: [
-    RouterModule.forRoot(NAV_ROUTES),
+    RouterModule.forRoot(APP_ROUTES),
     BrowserModule,
 
     // Routes
