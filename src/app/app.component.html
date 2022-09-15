@@ -1,8 +1,16 @@
 <div class="app-grid">
-  <div class="nav-wrapper">
-    <navigation></navigation>
-  </div>
-  <div class="view-wrapper">
-    <app-view></app-view>
-  </div>
+  <ng-container *ngIf="(this.currentUrl | async) === '/login'; then unauthenticated; else authenticated"></ng-container>
+
+  <ng-template #authenticated>
+    <div class="nav-wrapper">
+      <user-navigation></user-navigation>
+    </div>
+    <div class="view-wrapper">
+      <user-view></user-view>
+    </div>
+  </ng-template>
+
+  <ng-template #unauthenticated>
+    <router-outlet></router-outlet>
+  </ng-template>
 </div>

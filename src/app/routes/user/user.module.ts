@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {UserSettingsComponent} from "./user-settings.component";
 import {UserService} from "./user.service";
-import {CommonModule} from "../../common/common.module";
+import {ConsumeterCommonModule} from "../../common/consumeter-common.module";
 import {LoginComponent} from "./login.component";
 
 @NgModule({
@@ -10,7 +10,7 @@ import {LoginComponent} from "./login.component";
     LoginComponent,
   ],
   imports: [
-    CommonModule
+    ConsumeterCommonModule
   ],
   exports: [
     UserSettingsComponent,

@@ -7,8 +7,9 @@
 
   <!-- TODO: this should be hidden with css and add a smooth animation -->
   <div *ngIf="isShown === true">
-    <div class="logout">
-      <button (click)="logout()">logout</button>
+    <div class="logout route-item"
+         (click)="logout()">
+      <span class="link-text">logout</span>
     </div>
     <div *ngFor="let route of routes">
       <nav-item [route]="route"></nav-item>

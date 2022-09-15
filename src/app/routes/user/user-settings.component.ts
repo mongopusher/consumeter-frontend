@@ -1,6 +1,7 @@
 import {Component, Inject} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "./user.service";
+import {AuthService} from "../../shared/auth/auth.service";
 
 @Component({
   selector: 'user',
@@ -14,7 +15,7 @@ export class UserSettingsComponent {
   public userSettings: FormGroup;
 
   public constructor(@Inject(FormBuilder) private formBuilder: FormBuilder,
-                     @Inject(UserService) private userService: UserService) {
+                     @Inject(AuthService) private authService: AuthService) {
     this.usernameFormcontrol = this.formBuilder.control('', [Validators.required])
     this.emailFormcontrol = this.formBuilder.control('', [Validators.required])
     this.passwordFormcontrol = this.formBuilder.control('', [Validators.required])
@@ -29,7 +30,7 @@ export class UserSettingsComponent {
   }
 
   public async load(): Promise<void> {
-    const loadedUserSettings = await this.userService.loadUser();
+    const loadedUserSettings = await this.authService.loadUser();
 
     if (loadedUserSettings !== undefined) {
       this.userSettings.patchValue(loadedUserSettings.user);
@@ -45,6 +46,6 @@ export class UserSettingsComponent {
     }
 
     const updateUserDto = this.userSettings.value;
-    await this.userService.updateUser(updateUserDto);
+    await this.authService.updateUser(updateUserDto);
   }
 }

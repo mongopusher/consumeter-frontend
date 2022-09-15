@@ -11,7 +11,7 @@ export const USER_ROUTES: Routes = [
     canActivate: [UserGuard]
   },
   {
-    path: 'account',
+    path: 'user-settings',
     component: UserSettingsComponent,
     canActivate: [UserGuard]
   },

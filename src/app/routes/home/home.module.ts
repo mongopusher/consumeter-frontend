@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
-import {CommonModule} from "../../common/common.module";
+import {ConsumeterCommonModule} from "../../common/consumeter-common.module";
 
 @NgModule({
   declarations: [
     HomeComponent,
   ],
-  imports: [CommonModule],
+  imports: [ConsumeterCommonModule],
   exports: [HomeComponent],
   providers: [],
 })

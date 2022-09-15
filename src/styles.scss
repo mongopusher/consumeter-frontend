@@ -2,17 +2,19 @@
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "src/app/variables";
-
+// pasted from https://www.cssfontstack.com/Trebuchet-MS
 body {
+  h1 { font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
   margin: 0;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
 button {
   color: $secondary;
   background-color: $primary;
   border: 2px solid $secondary;
-
-
+  border-radius: 0.5em;
+  padding: 5px;
 
   &:hover {
     cursor: pointer;
@@ -23,8 +25,6 @@ button {
 
   }
 
-  border-radius: 0.5em;
-  padding: 5px;
 
   &.small {
     font-size: 1em;
@@ -33,5 +33,27 @@ button {
   &.big {
     font-size: 2em;
     padding: 8px;
+  }
+}
+
+.code {
+  font-family: "Courier New";
+}
+
+// NAVIGATION
+.route-item {
+  padding: 5px;
+  .link-text {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 16px;
+    padding: 4px 8px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: $secondary;
+  }
+
+  &:hover {
+    background-color: mix($primary, $primary-light);
+    cursor: pointer;
   }
 }

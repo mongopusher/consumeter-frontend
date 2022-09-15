@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view',
+  selector: 'user-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })

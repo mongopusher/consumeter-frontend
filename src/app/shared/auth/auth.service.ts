@@ -1,21 +1,24 @@
 import {Inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {IUserResponse} from "./user-response.type";
 import * as dayjs from 'dayjs';
 import {Dayjs} from "dayjs";
+import {IUserResponse} from "../../routes/user/user-response.type";
 
 @Injectable()
-export class UserService {
+export class AuthService {
   public constructor(private httpClient: HttpClient) {
 
   }
 
-  public isLoggedIn(): boolean {
+  public validateTokenExpiration(): boolean {
     /* take a look at:
         https://codecraft.tv/courses/angular/routing/router-guards/
         https://blog.angular-university.io/angular-jwt-authentication/
     */
-    return dayjs().isBefore(this.getExpiration());
+    const now = dayjs();
+    const expiration = this.getTokenExpiration();
+
+    return expiration === undefined ? false : now.isBefore(expiration);
   }
 
   public async loadUser(): Promise<IUserResponse> {
@@ -32,18 +35,15 @@ export class UserService {
     this.processResponse(response);
   }
 
-  public async login(loginUserDto: any): Promise<IUserResponse> {
+  public async login(loginUserDto: any): Promise<void> {
     const response = await this.httpClient.post<IUserResponse>('http://localhost:3000/login', {user: loginUserDto}).toPromise();
 
-    this.processResponse(response);
-
-    return response;
+    this.processResponse(response)
   }
 
   public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('expires_at');
-
   }
 
 
@@ -55,9 +55,10 @@ export class UserService {
     console.log('Login successful. You will be automatically logged out:', expiresAt.format('DD.MM.YYYY-HH:mm:ss'));
   }
 
-  private getExpiration(): Dayjs | undefined {
+  private getTokenExpiration(): Dayjs | undefined {
     const expiration = localStorage.getItem('expires_at');
     if (expiration === null) {
+      console.log('NO expiration found');
       return undefined;
     }
     const expiresAt = JSON.parse(expiration);

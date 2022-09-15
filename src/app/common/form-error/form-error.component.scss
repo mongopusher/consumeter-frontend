@@ -1,0 +1,10 @@
+@import "../../variables";
+
+.error {
+  margin-top: 15px;
+  display: grid;
+
+  .message {
+    justify-self: center;
+  }
+}

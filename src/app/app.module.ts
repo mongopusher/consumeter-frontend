@@ -6,8 +6,9 @@ import {ViewComponent} from './view/view.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {RoutingModule} from "./navigation/routing.module";
-import {AuthInterceptor} from "./routes/user/auth.interceptor";
+import {AuthInterceptor} from "./shared/auth/auth.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthModule} from "./shared/auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     MatToolbarModule,
     MatIconModule,
     RoutingModule,
+    AuthModule,
   ],
   providers: [
     {
