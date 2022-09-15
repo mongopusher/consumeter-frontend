@@ -50,6 +50,7 @@ button {
     line-height: 1.5;
     text-decoration: none;
     color: $secondary;
+    user-select: none;
   }
 
   &:hover {
@@ -57,3 +58,19 @@ button {
     cursor: pointer;
   }
 }
+
+// the browsers autocomplete
+
+:-webkit-autofill {
+  -webkit-text-fill-color: $primary-dark;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus,
+:-webkit-autofill:active {
+  -webkit-text-fill-color: $secondary;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
