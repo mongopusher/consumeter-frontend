@@ -17,8 +17,6 @@ export class UserNavigationComponent {
     this.isShown = false;
   }
 
-
-
   public toggleNavBar(): void {
     this.isShown = !this.isShown;
   }

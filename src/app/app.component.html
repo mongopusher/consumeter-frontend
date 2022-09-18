@@ -1,5 +1,5 @@
 <div class="app-grid">
-  <ng-container *ngIf="(this.currentUrl | async) === '/login'; then unauthenticated; else authenticated"></ng-container>
+  <ng-container *ngIf="isPublicUrl === true; then unauthenticated; else authenticated"></ng-container>
 
   <ng-template #authenticated>
     <div class="nav-wrapper">

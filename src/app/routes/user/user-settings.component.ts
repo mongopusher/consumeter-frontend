@@ -1,10 +1,9 @@
 import {Component, Inject} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "./user.service";
 import {AuthService} from "../../shared/auth/auth.service";
 
 @Component({
-  selector: 'user',
+  selector: 'user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })

@@ -1,0 +1,22 @@
+<div class="form">
+  <form [formGroup]="register"
+        (submit)="createUser()">
+    <div class="form-box">
+      <text-input label="username"
+                  [formControl]="usernameFormControl"
+                  ngDefaultControl></text-input>
+
+      <text-input label="email"
+                  [formControl]="emailFormControl"
+                  ngDefaultControl></text-input>
+
+      <text-input label="password"
+                  [formControl]="passwordFormControl"
+                  [isPassword]="true"
+                  ngDefaultControl></text-input>
+
+      <form-error [errorMessage]="errorMessage"></form-error>
+      <button type="submit" class="register big">sign me up</button>
+    </div>
+  </form>
+</div>

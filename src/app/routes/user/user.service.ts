@@ -1,4 +1,4 @@
-import {Inject, Injectable} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {IUserResponse} from "./user-response.type";
 import * as dayjs from 'dayjs';
@@ -34,6 +34,14 @@ export class UserService {
 
   public async login(loginUserDto: any): Promise<IUserResponse> {
     const response = await this.httpClient.post<IUserResponse>('http://localhost:3000/login', {user: loginUserDto}).toPromise();
+
+    this.processResponse(response);
+
+    return response;
+  }
+
+  public async createUser(createUserDto: any): Promise<IUserResponse> {
+    const response = await this.httpClient.post<IUserResponse>('http://localhost:3000/create-user', {user: createUserDto}).toPromise();
 
     this.processResponse(response);
 

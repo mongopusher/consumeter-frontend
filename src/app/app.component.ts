@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
-import {Observable, Subject} from "rxjs";
+import {PUBLIC_ROUTES} from "./navigation/routes.constant";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import {Observable, Subject} from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public currentUrl: Subject<string>;
+  public isPublicUrl: boolean;
 
   public constructor(@Inject(Router) private router: Router) {
-    this.currentUrl = new Subject();
+    this.isPublicUrl = true;
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.currentUrl.next(event.url);
+        this.isPublicUrl = PUBLIC_ROUTES.some((route) => route.path === event.url.split('/')[1])
       }
     })
   }

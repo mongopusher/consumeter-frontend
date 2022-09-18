@@ -1,8 +1,8 @@
 import {Component, Inject} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "./user.service";
+import {UserService} from "../user.service";
 import {HttpErrorResponse, HttpStatusCode} from "@angular/common/http";
-import {IUserResponse} from "./user-response.type";
+import {IUserResponse} from "../user-response.type";
 import {Router} from "@angular/router";
 
 @Component({
