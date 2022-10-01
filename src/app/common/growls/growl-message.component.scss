@@ -1,0 +1,30 @@
+@import "../../variables";
+
+.growl-message {
+  position: fixed;
+  bottom: 0;
+  left: -1000px;
+
+  margin: 1em;
+  border: 2px solid $secondary-light;
+  border-radius: 0.5em;
+  background-color: $primary-light;
+  color: $secondary-dark;
+  padding: 20px;
+  font-size: 1em;
+
+  transition: left 0.3s ease-in-out;
+
+  &.end-position {
+    left: 0;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: transparent;
+  }
+}
+

@@ -4,6 +4,7 @@ import {UserService} from "../user.service";
 import {HttpErrorResponse, HttpStatusCode} from "@angular/common/http";
 import {IUserResponse} from "../user-response.type";
 import {Router} from "@angular/router";
+import {GrowlService} from "../../../common/growls/growl.service";
 
 @Component({
   selector: 'register',
@@ -19,6 +20,7 @@ export class RegisterComponent {
 
   public constructor(@Inject(FormBuilder) private formBuilder: FormBuilder,
                      @Inject(UserService) private userService: UserService,
+                     @Inject(GrowlService) private growlService: GrowlService,
                      @Inject(Router) private router: Router) {
     this.errorMessage = '';
     this.usernameFormControl = this.formBuilder.control('', [Validators.required])
@@ -36,7 +38,7 @@ export class RegisterComponent {
     const controls = Object.values(this.register.controls);
     for (let control of controls) {
       if (control.errors) {
-        console.error('validaton errors: ', control.errors);
+        console.error('validation errors: ', control.errors);
       }
     }
 
@@ -45,10 +47,7 @@ export class RegisterComponent {
       this.reroute(user);
     } catch (error) {
       if (error instanceof HttpErrorResponse) {
-        if (error.status === HttpStatusCode.BadRequest) {
-          console.log(error);
-          this.errorMessage = error.error.message;
-        }
+        this.growlService.createGrowlMessage(error.error.message);
       }
     }
   }
